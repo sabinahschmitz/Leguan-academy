@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import mova from '@/assets/sounds/a.mov'
 import movb from '@/assets/sounds/b.mov'
 import movc from '@/assets/sounds/c.mov'
@@ -29,47 +29,42 @@ import movz from '@/assets/sounds/z.mov'
 
 const alphabet = ref('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''))
 const sounds = ref({
-        A: mova, // Replace with actual sound file names
-        B: movb,
-        C: movc,
-        D: movd,
-        E: move,
-        F: movf,
-        G: movg,
-        H: movh,
-        I: movi,
-        J: movj,
-        K: movk,
-        L: movl,
-        M: movm,
-        N: movn,
-        O: movo,
-        P: movp,
-        Q: movq,
-        R: movr,
-        S: movs,
-        T: movt,
-        U: movu,
-       V: movv,
-       W: movw,
-       X: movx,
-       Y: movy,
-       Z: movz,
-
-    
-        // Add more sounds for each letter
-      })
+  A: mova,
+  B: movb,
+  C: movc,
+  D: movd,
+  E: move,
+  F: movf,
+  G: movg,
+  H: movh,
+  I: movi,
+  J: movj,
+  K: movk,
+  L: movl,
+  M: movm,
+  N: movn,
+  O: movo,
+  P: movp,
+  Q: movq,
+  R: movr,
+  S: movs,
+  T: movt,
+  U: movu,
+  V: movv,
+  W: movw,
+  X: movx,
+  Y: movy,
+  Z: movz,
+})
 
 const playSound = (letter) => {
-      //const audio = new Audio(sounds.value[letter]);
-    const audio = new Audio(sounds.value[letter])
-      audio.load();
-      audio.play();
-    }
+  const audio = new Audio(sounds.value[letter])
+  audio.load();
+  audio.play();
+}
 </script> 
 
 <template>
-  <div> <body>
   <div id="app">
     <div class="game-container">
       <div class="keyboard">
@@ -84,12 +79,8 @@ const playSound = (letter) => {
       </div>
     </div>
   </div>
-
-</body>
-
-</div>
-
 </template>
+
 <style scoped>
 body {
   font-family: Arial, sans-serif;
@@ -98,32 +89,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f0f0f0;
 }
 
 #app {
   text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .game-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 80%;
-  max-width: 1200px;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
   margin: 0 auto;
 }
 
 .keyboard {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .panel {
-  flex-basis: 30%;
+  width: 100%;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 h1, h2 {
@@ -136,14 +130,29 @@ h1, h2 {
   margin: 5px;
   border: 2px solid #333;
   background-color: #484141;
+  color: #fff;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .key:hover {
   background-color: #63a1c7;
-  color: #fff;
   border-color: #333;
 }
 
+@media (min-width: 768px) {
+  .game-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .keyboard {
+    width: 70%;
+  }
+
+  .panel {
+    width: 25%;
+  }
+}
 </style>

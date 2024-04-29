@@ -2,12 +2,17 @@
     <div>
       <header>
         <h1>Treasure Hunt Game</h1>
-        <!-- Move the header content here if needed -->
       </header>
       <div class="container">
         <div ref="gameContainer" class="th-grid"></div>
-        <div ref="instructionPanel" class="th-instructions">Instructions will appear here.</div>
+        <div class="th-instructions">
+          <div ref="instructionPanel" class="instruction-content">Instructions will appear here.</div>
+          
+        </div>
       </div>
+      <div class="treasure-image-container" v-show="treasureFound">
+            <img src="/src/assets/icons/treasure.png" alt="Treasure" class="treasure-icon">
+          </div>
     </div>
   </template>
   
@@ -16,7 +21,9 @@
   
   const gridSize = 8;
   let grid = new Array(gridSize * gridSize).fill('');
+  let hasTreasure = new Array(gridSize * gridSize).fill(false);
   let treasureIndex = Math.floor(Math.random() * grid.length);
+  hasTreasure[treasureIndex] = true;
   let selectedIndex = gridSize * (gridSize - 1); // Bottom-left corner
   const directions = ['↑', '→', '↓', '←'];
   const directionText = ['UP', 'RIGHT', 'DOWN', 'LEFT'];
@@ -65,7 +72,6 @@
     for (let i = 0; i < grid.length; i++) {
       const cell = document.createElement('div');
       cell.className = 'th-cell';
-      //cell.textContent = i; // Debug: display index of each cell
       gameContainer.value.appendChild(cell);
     }
     console.log("Grid initialized!");
@@ -130,25 +136,28 @@
     return directions;
   }
   
+  
   function revealContent(index, cell) {
-   
-  // Remove the 'th-selected' class from the previously selected cell
-  gameContainer.value.children[selectedIndex].classList.remove('th-selected');
-  // Add the 'th-selected' class to the clicked cell
-  cell.classList.add('th-selected');
-  selectedIndex = index; // Update the selectedIndex
-  if (index === treasureIndex) {
-    // Display the treasure icon
-    cell.innerHTML = '<img src="/path/to/treasure-icon.png" alt="Treasure" class="treasure-icon">';
-    instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>';
-  } else if (grid[index]) {
-    cell.textContent = grid[index];
-    instructionPanel.value.innerHTML = `<div>${grid[index]}: Go ${directionText[directions.indexOf(grid[index])]}!</div>`;
-  } else {
-    cell.textContent = '⛏️';
-    instructionPanel.value.textContent = 'No clue here. Try another cell.';
-  }
-  }
+    // Remove the 'th-selected' class from the previously selected cell
+    gameContainer.value.children[selectedIndex].classList.remove('th-selected');
+    // Add the 'th-selected' class to the clicked cell
+    cell.classList.add('th-selected');
+    selectedIndex = index; // Update the selectedIndex
+    if (index === treasureIndex) {
+        // Display the treasure icon in the instructions panel
+        instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>' +
+                                           '<img src="/src/assets/icons/treasure.png" alt="Treasure" class="treasure-icon">';
+    } else if (grid[index]) {
+        cell.textContent = grid[index];
+        instructionPanel.value.innerHTML = `<div>${grid[index]}: Go ${directionText[directions.indexOf(grid[index])]}!</div>`;
+    } else {
+        cell.textContent = '⛏️';
+        instructionPanel.value.textContent = 'No clue here. Try another cell.';
+    }
+}
+
+
+
   
   function endGame() {
     // Disable further interaction with cells
@@ -172,9 +181,31 @@
   </script>
   
   <style scoped>
+  .container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
   .treasure-icon {
-  width: 100%; /* Adjust the width of the image to fill the cell */
-  height: 100%; /* Adjust the height of the image to fill the cell */
-  object-fit: contain; /* Ensure the image fits within the cell without distortion */
-}
-  </style>
+    max-width: 100%; /* Ensure the image does not exceed its container width */
+    height: auto; /* Maintain the aspect ratio of the image */
+  }
+
+  .th-instructions {
+    display: flex; /* Make the instruction panel and treasure image container flex items */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space items evenly */
+    font-size: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 60%; /* Adjust width as needed */
+  }
+
+  .instruction-content {
+    flex-grow: 1; /* Allow the instruction panel to grow */
+  }
+
+  .treasure-image-container {
+    margin-left: 20px; /* Add space between the instruction panel and treasure image */
+  }
+</style>
