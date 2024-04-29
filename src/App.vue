@@ -25,7 +25,7 @@ import toolbar from '/src/components/main-toolbar.vue'
 <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
 </form>
 
-
+<a href="#">Impressum</a>
 
   </footer>
   </header>
