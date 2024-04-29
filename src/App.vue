@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import toolbar from '/src/components/main-toolbar.vue'
 </script>
 
 <template>
@@ -7,10 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <img alt="Leguan Academy logo" src="@/assets/logo2.png" width="125" height="125" />
     <div><h1> Leguan Academy</h1></div>
     <div><h2> Digital Education for Children</h2></div>
-
-
     <div>
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
