@@ -62,6 +62,7 @@ button {
 }
 .treasure-icon {
   background-image: url('/src/assets/icons/treasure.png');
+  background-size: cover;
 }
 .th-instructions {
   font-size: 20px;

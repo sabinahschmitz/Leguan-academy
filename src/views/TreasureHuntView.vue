@@ -147,7 +147,6 @@
     if (index === treasureIndex) {
         // Display the treasure icon in the instructions panel
         cell.classList.add('treasure-icon');
-
         instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>' 
     } else if (grid[index]) {
         cell.textContent = grid[index];
@@ -157,8 +156,6 @@
         instructionPanel.value.textContent = 'No clue here. Try another cell.';
     }
 }
-
-
 
   
   function endGame() {
@@ -212,5 +209,7 @@
     margin-left: 20px; /* Add space between the instruction panel and treasure image */
   }
 
-  
+  .treasure-icon {
+  background-image: url('/src/assets/icons/treasure.png');
+}
 </style>
