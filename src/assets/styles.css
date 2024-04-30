@@ -92,6 +92,9 @@ input[type="text"] {
   cursor: pointer;
   background-size: cover;
 }
+.treasure-icon {
+  background-image: url('/src/assets/icons/treasure.png');
+}
 .th-instructions {
   font-size: 20px;
   border: 2px solid black; /* Increased border thickness */

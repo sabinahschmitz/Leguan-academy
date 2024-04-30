@@ -145,8 +145,9 @@
     selectedIndex = index; // Update the selectedIndex
     if (index === treasureIndex) {
         // Display the treasure icon in the instructions panel
-        instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>' +
-                                           '<img src="/src/assets/icons/treasure.png" alt="Treasure" class="treasure-icon">';
+        cell.classList.add('treasure-icon');
+
+        instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>' 
     } else if (grid[index]) {
         cell.textContent = grid[index];
         instructionPanel.value.innerHTML = `<div>${grid[index]}: Go ${directionText[directions.indexOf(grid[index])]}!</div>`;
@@ -187,8 +188,7 @@
     align-items: center;
   }
   .treasure-icon {
-    max-width: 100%; /* Ensure the image does not exceed its container width */
-    height: auto; /* Maintain the aspect ratio of the image */
+    background-image: url('/src/assets/icons/treasure.png');
   }
 
   .th-instructions {
