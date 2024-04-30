@@ -78,6 +78,7 @@
     setupClues();
     // Highlight the initially selected cell
     gameContainer.value.children[selectedIndex].classList.add('th-selected');
+    //gameContainer.value.children[selectedIndex].classList.add('treasure-start-icon');
     // Set the first instruction
     instructionPanel.value.innerHTML = `<div>UP: Go UP!</div>`;
     // Add event listener for clicking on cells
@@ -186,6 +187,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-image: url('/src/assets/images/treasurehuntbackground.png');
+
   }
   
 
@@ -197,13 +200,17 @@
     border: 1px solid black;
     padding: 10px;
     width: 60%; /* Adjust width as needed */
+    margin: 5px;
   }
 
   .instruction-content {
     flex-grow: 1; /* Allow the instruction panel to grow */
+    margin: 5px;
   }
 
   .treasure-image-container {
     margin-left: 20px; /* Add space between the instruction panel and treasure image */
   }
+
+  
 </style>

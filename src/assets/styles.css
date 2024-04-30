@@ -38,39 +38,6 @@ button {
   margin-top: 5vh; /* Add margin between buttons and input field */
 }
 
-/* Style for the input field */
-input[type="text"] {
-  font-size: 4vw; /* Relative font size */
-  padding: 2vh 3vw; /* Relative padding */
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 80%; /* 80% width */
-  height: 20vh; /* 20% of the viewport height */
-  max-width: 600px; /* Maximum width */
-  max-height: 200px; /* Maximum height */
-}
-
-.toggle-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.toggle-buttons button {
-  font-size: 14px;
-  padding: 8px 12px;
-  border: 1px solid #333;
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
-}
-
-.toggle-buttons button img {
-  width: 30px; /* Adjust flag image size */
-  height: auto; /* Maintain aspect ratio */
-  vertical-align: middle; /* Align image vertically */
-  margin-right: 5px; /* Add spacing between flag and text */
-}
-
 .th-container {
   display: flex;
   align-items: start;
@@ -80,6 +47,7 @@ input[type="text"] {
   display: grid;
   grid-template-columns: repeat(8, 50px); /* Updated to 8 columns */
   grid-gap: 5px;
+  margin: 15px;
 }
 .th-cell {
   width: 50px;
@@ -113,11 +81,15 @@ input[type="text"] {
   background-image: url('/Leguan-Academy/src/assets/icons/treasure.png'); /* Treasure image URL */
 }
 .th-selected {
-  background-color: lightblue;
+  background-image: url('/Leguan-Academy/src/assets/icons/treasureicon.png');
+
+  
 }
-.th-wrong {
-  background-color: red;
+.treasure-start-icon{
+  background-image: url('/Leguan-Academy/src/assets/icons/treasureicon.png');
+z-index: 100;
 }
+
 
 
 h1 {
