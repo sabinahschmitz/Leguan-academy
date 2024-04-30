@@ -187,9 +187,7 @@
     flex-direction: row;
     align-items: center;
   }
-  .treasure-icon {
-    background-image: url('/src/assets/icons/treasure.png');
-  }
+  
 
   .th-instructions {
     display: flex; /* Make the instruction panel and treasure image container flex items */
