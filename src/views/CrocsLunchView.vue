@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <canvas width="400" height="400" id="game"></canvas>
+    
 </body>
 </template>
 
