@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import PrivacyPolicyViewVue from '@/views/PrivacyPolicyView.vue'
 import KeyboardViewVue from '@/views/KeyboardView.vue'
 import TreasureHuntViewVue from '@/views/TreasureHuntView.vue'
 import CrocsLunchViewVue from '@/views/CrocsLunchView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,12 +38,17 @@ const router = createRouter({
     component: CrocsLunchViewVue
   },
   {
+    path: '/privacy',
+    name:'privacy',
+    component: PrivacyPolicyViewVue
+  },
+  {
     path: '/opensource',
     name: 'OpenSource',
     beforeEnter: (to, from, next) => {
       window.location.href = 'https://github.com/sabinahschmitz/Leguan-academy/';
     }
-  }
+  },
   ]
 })
 

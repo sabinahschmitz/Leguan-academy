@@ -17,6 +17,7 @@ import toolbar from '/src/components/main-toolbar.vue'
         <RouterLink to="/treasurehunt">Treasure Hunt</RouterLink>
         <RouterLink to="/crocoslunch">Crocos Lunch</RouterLink>
         <RouterLink to="/opensource">Open Source Contribution</RouterLink>
+        <RouterLink to="/privacy">Privacy</RouterLink>
       </nav>
       <RouterView></RouterView>
     </div>
@@ -28,6 +29,7 @@ import toolbar from '/src/components/main-toolbar.vue'
 </form>
 
 <a href="#">Impressum</a>
+<router-link to="/privacy">Privacy</router-link>
 
   </footer>
   </header>
