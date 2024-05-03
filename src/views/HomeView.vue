@@ -12,6 +12,11 @@
             <div class="card-title">Treasure Hunt</div>
             <div class="card-description">Go on a treasure hunting adventure and solve puzzles!</div>
           </router-link>
+          <router-link to="/crocoslunch" class="card">
+            <div class="card-image crocos-image"></div>
+            <div class="card-title">Crocos Lunch</div>
+            <div class="card-description">Croco is hungry</div>
+          </router-link>
         </div>
       </div>
     </template>
@@ -58,6 +63,10 @@
     
     .treasure-image {
       background-image: url('/src/assets/images/treasurehuntteaser.png');
+    }
+
+    .crocos-image {
+      background-image: url('/src/assets/images/crocoslunch.png');
     }
     
     .card-title {

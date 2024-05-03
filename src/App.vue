@@ -6,6 +6,7 @@ import toolbar from '/src/components/main-toolbar.vue'
 <template>
   <header>
     <img alt="Leguan Academy logo" src="@/assets/logo2.png" width="125" height="125" />
+    <p>Hi my name is Iggy, Iggy the Iguana</p>
     <div><h1> Leguan Academy</h1></div>
     <div><h2> Digital Education for Children</h2></div>
     <div>
@@ -14,6 +15,8 @@ import toolbar from '/src/components/main-toolbar.vue'
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/Keyboard">Keyboard</RouterLink>
         <RouterLink to="/treasurehunt">Treasure Hunt</RouterLink>
+        <RouterLink to="/crocoslunch">Crocos Lunch</RouterLink>
+        <RouterLink to="/opensource">Open Source Contribution</RouterLink>
       </nav>
       <RouterView></RouterView>
     </div>

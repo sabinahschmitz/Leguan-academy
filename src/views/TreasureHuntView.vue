@@ -18,6 +18,7 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
+
   
   const gridSize = 8;
   let grid = new Array(gridSize * gridSize).fill('');
@@ -166,6 +167,7 @@
     instructionPanel.value.innerHTML += '<div>Game Over!</div>';
   }
   
+  //todo bigger arrows
   function getDirection(fromIndex, toIndex) {
     const fromRow = Math.floor(fromIndex / gridSize);
     const fromCol = fromIndex % gridSize;
