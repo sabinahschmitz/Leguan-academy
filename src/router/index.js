@@ -4,7 +4,7 @@ import PrivacyPolicyViewVue from '@/views/PrivacyPolicyView.vue'
 import KeyboardViewVue from '@/views/KeyboardView.vue'
 import TreasureHuntViewVue from '@/views/TreasureHuntView.vue'
 import CrocsLunchViewVue from '@/views/CrocsLunchView.vue'
-
+import CyberSecViewVue from '@/views/CyberSecView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,33 +22,38 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     },
-  {
-    path: '/keyboard',
-    name: 'keyboard',
-    component: KeyboardViewVue
-  },
-  {
-    path: '/treasurehunt',
-    name: 'treasurehunt',
-    component: TreasureHuntViewVue
-  },
-  {
-    path: '/crocoslunch',
-    name: 'crocoslunch',
-    component: CrocsLunchViewVue
-  },
-  {
-    path: '/privacy',
-    name:'privacy',
-    component: PrivacyPolicyViewVue
-  },
-  {
-    path: '/opensource',
-    name: 'OpenSource',
-    beforeEnter: (to, from, next) => {
-      window.location.href = 'https://github.com/sabinahschmitz/Leguan-academy/';
+    {
+      path: '/keyboard',
+      name: 'keyboard',
+      component: KeyboardViewVue
+    },
+    {
+      path: '/treasurehunt',
+      name: 'treasurehunt',
+      component: TreasureHuntViewVue
+    },
+    {
+      path: '/crocoslunch',
+      name: 'crocoslunch',
+      component: CrocsLunchViewVue
+    },
+    {
+      path: '/cybersec',
+      name: 'cybersec',
+      component: CyberSecViewVue
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: PrivacyPolicyViewVue
+    },
+    {
+      path: '/opensource',
+      name: 'OpenSource',
+      beforeEnter: (to, from, next) => {
+        window.location.href = 'https://github.com/sabinahschmitz/Leguan-academy/'
+      }
     }
-  },
   ]
 })
 
