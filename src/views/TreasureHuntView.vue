@@ -7,12 +7,12 @@
         <div ref="gameContainer" class="th-grid"></div>
         <div class="th-instructions">
           <div ref="instructionPanel" class="instruction-content">Instructions will appear here.</div>
-          
         </div>
       </div>
+      <button @click="startNewGame" class="new-game">Start New Game</button>
       <div class="treasure-image-container" v-show="treasureFound">
-            <img src="/src/assets/icons/treasure.png" alt="Treasure" class="treasure-icon">
-          </div>
+        <img src="/src/assets/icons/treasure.png" alt="Treasure" class="treasure-icon">
+      </div>
     </div>
   </template>
   
@@ -31,11 +31,11 @@
   
   const gameContainer = ref(null);
   const instructionPanel = ref(null);
+  const treasureFound = ref(false);
   
   onMounted(() => {
     console.log("Mounted!");
-    initializeGrid();
-    document.addEventListener('keydown', handleArrowKeyPress);
+    startNewGame();
   });
   
   function handleArrowKeyPress(event) {
@@ -148,7 +148,8 @@
     if (index === treasureIndex) {
         // Display the treasure icon in the instructions panel
         cell.classList.add('treasure-icon');
-        instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>' 
+        instructionPanel.value.innerHTML = '<div>Congratulations! You found the treasure!</div>'
+        treasureFound.value = true;
     } else if (grid[index]) {
         cell.textContent = grid[index];
         instructionPanel.value.innerHTML = `<div>${grid[index]}: Go ${directionText[directions.indexOf(grid[index])]}!</div>`;
@@ -165,6 +166,25 @@
     document.removeEventListener('keydown', handleArrowKeyPress);
     // Display game over message
     instructionPanel.value.innerHTML += '<div>Game Over!</div>';
+  }
+
+  function startNewGame() {
+    // Clean up previous listeners
+    if (gameContainer.value) {
+      gameContainer.value.removeEventListener('click', handleCellClick);
+    }
+    document.removeEventListener('keydown', handleArrowKeyPress);
+
+    // Reset data
+    grid = new Array(gridSize * gridSize).fill('');
+    hasTreasure = new Array(gridSize * gridSize).fill(false);
+    treasureIndex = Math.floor(Math.random() * grid.length);
+    hasTreasure[treasureIndex] = true;
+    selectedIndex = gridSize * (gridSize - 1);
+    treasureFound.value = false;
+
+    initializeGrid();
+    document.addEventListener('keydown', handleArrowKeyPress);
   }
   
   //todo bigger arrows
@@ -195,7 +215,7 @@
     display: flex; /* Make the instruction panel and treasure image container flex items */
     align-items: center; /* Align items vertically */
     justify-content: space-between; /* Space items evenly */
-    font-size: 20px;
+    font-size: 28px;
     border: 1px solid black;
     padding: 10px;
     width: 60%; /* Adjust width as needed */
@@ -205,6 +225,7 @@
   .instruction-content {
     flex-grow: 1; /* Allow the instruction panel to grow */
     margin: 5px;
+    font-size: 28px;
   }
 
   .treasure-image-container {
@@ -214,4 +235,9 @@
   .treasure-icon {
   background-image: url('/src/assets/icons/treasure.png');
 }
+
+  .new-game {
+    margin-top: 10px;
+    font-size: 24px;
+  }
 </style>
