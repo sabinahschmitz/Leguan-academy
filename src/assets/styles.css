@@ -56,7 +56,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 36px;
   cursor: pointer;
   background-size: cover;
 }
@@ -65,7 +65,7 @@ button {
   background-size: cover;
 }
 .th-instructions {
-  font-size: 20px;
+  font-size: 28px;
   border: 2px solid black; /* Increased border thickness */
   padding: 20px; /* Increased padding */
   width: 250px; /* Increased width */
