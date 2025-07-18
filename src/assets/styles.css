@@ -82,9 +82,12 @@ button {
   background-image: url('/Leguan-Academy/src/assets/icons/treasure.png'); /* Treasure image URL */
 }
 .th-selected {
-  background-image: url('/Leguan-Academy/src/assets/icons/treasureicon.png');
+  background-image: url('/src/assets/icons/treasureicon.png');
+}
 
-  
+/* Ensure treasure icon is visible even when the cell is selected */
+.th-selected.treasure-icon {
+  background-image: url('/src/assets/icons/treasure.png');
 }
 .treasure-start-icon{
   background-image: url('/Leguan-Academy/src/assets/icons/treasureicon.png');
