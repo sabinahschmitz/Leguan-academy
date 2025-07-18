@@ -3,7 +3,14 @@
     <h1>Cyber Security Training</h1>
     <div class="game-area">
       <div class="game-frame">
-        <p class="placeholder">Game frame</p>
+        <CyberSecGame
+          ref="game"
+          :selected-level="selectedLevel"
+          :motions="motions"
+          :feedback="feedback"
+          :bugs="bugs"
+          @finished="onFinished"
+        />
       </div>
       <div class="sidebar">
         <button class="play-button" @click="playGame">Play</button>
@@ -26,6 +33,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import CyberSecGame from '@/components/CyberSecGame.vue'
+
+const game = ref(null)
 
 const levels = [1, 2, 3]
 const selectedLevel = ref(1)
@@ -34,7 +44,11 @@ const feedback = ref(true)
 const bugs = ref(false)
 
 function playGame() {
-  console.log(`Play level ${selectedLevel.value}`)
+  game.value?.startGame()
+}
+
+function onFinished() {
+  console.log('Game finished')
 }
 </script>
 
@@ -58,10 +72,6 @@ function playGame() {
   justify-content: center;
   background-color: #fff;
   margin-right: 20px;
-}
-
-.placeholder {
-  color: #888;
 }
 
 .sidebar {
