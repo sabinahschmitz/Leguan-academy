@@ -64,8 +64,8 @@ function onFinished() {
 }
 
 .game-frame {
-  width: 600px;
-  height: 400px;
+  width: 650px;
+  height: 500px;
   border: 2px solid #333;
   display: flex;
   align-items: center;
