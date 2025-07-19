@@ -12,7 +12,12 @@
     <div class="game-controls">
       <button v-if="!playing" @click="startGame">Play</button>
       <div v-else class="in-game-controls">
-        <button @click="sendResponse">Send Emojis</button>
+        <select v-model="selectedEmoji">
+          <option v-for="emoji in playerEmojis" :key="emoji" :value="emoji">
+            {{ emoji }}
+          </option>
+        </select>
+        <button @click="sendResponse">Send</button>
         <button @click="report">🚨 Report</button>
       </div>
     </div>
@@ -48,6 +53,14 @@ const chatHistory = ref([])
 const playing = ref(false)
 const msgIndex = ref(0)
 const statusMessage = ref('')
+const playerEmojis = [
+  '\uD83D\uDE00\uD83D\uDE00',
+  '\uD83D\uDC4D\uD83D\uDE0A',
+  '\uD83E\uDD14\u2753',
+  '\uD83D\uDE02\uD83D\uDE02',
+  '\uD83D\uDE0E\uD83D\uDD25'
+]
+const selectedEmoji = ref(playerEmojis[0])
 
 function startGame() {
   chatHistory.value = []
@@ -68,13 +81,8 @@ function nextMessage() {
 }
 
 function sendResponse() {
-  chatHistory.value.push({ sender: 'player', text: randomPlayerEmojis() })
+  chatHistory.value.push({ sender: 'player', text: selectedEmoji.value })
   nextMessage()
-}
-
-function randomPlayerEmojis() {
-  const options = ['\uD83D\uDE00\uD83D\uDE00', '\uD83D\uDC4D\uD83D\uDE0A', '\uD83E\uDD14\u2753', '\uD83D\uDE02\uD83D\uDE02', '\uD83D\uDE0E\uD83D\uDD25']
-  return options[Math.floor(Math.random() * options.length)]
 }
 
 function report() {
@@ -108,11 +116,18 @@ defineExpose({ startGame })
   padding: 10px;
 }
 .chat-window {
-  height: 200px;
+  height: 300px;
   overflow-y: auto;
   border: 1px solid #aaa;
   padding: 5px;
   margin-bottom: 10px;
+}
+.game-controls {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 .message {
   margin: 2px 0;
